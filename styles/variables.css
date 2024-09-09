@@ -1,0 +1,10 @@
+:root {
+  --font-main: 'Golos-Text';
+  --font-accent: 'Merriweather';
+  --color-main: #313131;
+  --color-accent: #f54932;
+  --color-bttn-card: #3057a2;
+  --color-bg-card-member: #424241;
+  --font-feature-settings: 'pnum' on, 'lnum' on;
+  --content-block-size: clamp(1222px, 27.5vw, 336px);
+}
