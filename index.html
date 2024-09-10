@@ -13,9 +13,8 @@
   </head>
   <body class="page">
     <header class="header">
-      <div class="header-image"></div>
       <div class="header__content">
-        <a class="header__logo" href="#0">
+        <a class="header__logo" href="#0" aria-hidden="true">
           <div class="logo-image">
             <svg xmlns="http://www.w3.org/2000/svg">
               <use href="./images/logo.svg#logo"></use>
@@ -63,32 +62,28 @@
             </li>
           </ul>
         </nav>
-      </div class="header__content">
-      <div class="header__overlay overlay">
-
-
-
-        <div class="overlay__image circle"></div>
-        <img class="overlay__image king" src="./images/header-overlay/king.png" alt="Шахматная фигура: король">
-        <img class="overlay__image queen" src="./images/header-overlay/queen.png" alt="Шахматная фигура: ферзь">
-        <img class="overlay__image horse" src="./images/header-overlay/horse.png" alt="Шахматная фигура: конь">
-        <img class="overlay__image pawn" src="./images/header-overlay/pawn.png" alt="Шахматная фигура: пешка">
-        <img class="overlay__image city" src="./images/header-overlay/city.png" alt="Город">
-        <img class="overlay__image path" src="./images/header-overlay/path.png" alt="Контур">
+      </div>
+      <div class="header__overlay-images overlay-images" aria-hidden="true">
+        <div class="overlay-images__image circle"></div>
+        <img class="overlay-images__image king" src="./images/header-overlay/king.png" alt="Шахматная фигура: король">
+        <img class="overlay-images__image queen" src="./images/header-overlay/queen.png" alt="Шахматная фигура: ферзь">
+        <img class="overlay-images__image horse" src="./images/header-overlay/horse.png" alt="Шахматная фигура: конь">
+        <img class="overlay-images__image pawn" src="./images/header-overlay/pawn.png" alt="Шахматная фигура: пешка">
+        <img class="overlay-images__image city" src="./images/header-overlay/city.png" alt="Город">
+        <img class="overlay-images__image path" src="./images/header-overlay/path.png" alt="Контур">
         <svg 
-          class="overlay__image text" 
+          class="overlay-images__image text" 
           width="777" 
           height="700" 
-          viewBox="0 0 777 700" 
-          fill="none" 
+          viewBox="0 0 777 700"
           xmlns="http://www.w3.org/2000/svg"
         >
           <use href="./images/header-overlay/text.svg#text"></use>
         </svg>
       </div>
-      
+      <div class="header__overlay" aria-hidden="true"></div>
     </header>
- 
+
 
     <script type='module' src="./scripts/data.js"></script>
     <script type='module' src="./scripts/script.js"></script>

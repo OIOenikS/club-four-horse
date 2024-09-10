@@ -2,9 +2,14 @@
   --font-main: 'Golos-Text';
   --font-accent: 'Merriweather';
   --color-main: #313131;
+  --color-bttn-header: #1f1f1f;
   --color-accent: #f54932;
+  --color-logo-text: #595653;
   --color-bttn-card: #3057a2;
+  --color-bg-header: #e9ded4;
   --color-bg-card-member: #424241;
+  --color-circle-overlay-img: #fbce51;
+  --wght-main-text: 400;
   --font-feature-settings: 'pnum' on, 'lnum' on;
   --content-block-size: clamp(1222px, 27.5vw, 336px);
 }
