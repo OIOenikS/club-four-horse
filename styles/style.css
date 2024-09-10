@@ -16,12 +16,23 @@
 .header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  background-color: #e9ded4;
   background-blend-mode: color-burn;
   position: relative;
-  z-index: 1;
+  z-index: 4;
   overflow: hidden;
 }
 
+.header-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/header-bg-img.png');
+  background-position: center;
+  background-size:contain;
+  z-index: 5;
+  mix-blend-mode: color-burn;
+}
 
 .header__content {
   width: clamp(20.9375rem, 16.0419rem + 20.888vw, 33.875rem);
@@ -30,6 +41,7 @@
     0 
     92px
     clamp(4.5rem, -38.1104rem + 49.9097vw, 21.78125rem);
+    z-index: 5;
 }
 
 /******************logo-начало*******************/
@@ -195,19 +207,20 @@
 
 .overlay {
   position: relative;
-
 }
 
 .overlay__image {
   position: absolute;
 }
 
+
+
 .overlay .city {
   width: 1623.5px;
   height: 452.5px;
   left: -797px;
   bottom: -21px;
-  z-index: 3;
+  z-index: 4;
 }
 
 .overlay .path {
@@ -215,7 +228,7 @@
   height: 463.82px;
   left: -801px;
   bottom: -21px;
-  z-index: 3;
+  z-index: 4;
 }
 
 .overlay__image.circle {
@@ -226,6 +239,7 @@
   left: -8px;
   bottom: 83px;
   z-index: 1;
+
 }
 
 .overlay__image.text {
@@ -234,6 +248,7 @@
   left: -78px;
   bottom: 40px;
   z-index: 2;
+  mix-blend-mode: overlay;
 }
 
 .overlay .king {
@@ -243,7 +258,7 @@
   left: 60px;
   bottom: 168px;
   transform: rotate(-5.99deg);
-  z-index: 2;
+  z-index: 3;
 }
 
 .overlay .queen {
@@ -251,7 +266,7 @@
   height: 252px;
   left: 395px;
   bottom: 277px;
-  z-index: 2;
+  z-index: 3;
   transform: rotate(7.59deg);
 }
 
@@ -261,7 +276,7 @@
   left: 175px;
   bottom: -38px;
   transform: rotate(-10.59deg);
-  z-index: 4;
+  z-index: 5;
 }
 
 .overlay .pawn {
@@ -269,7 +284,7 @@
   height: 122.22px;
   left: 557px;
   bottom: 20px;
-  z-index: 4;
+  z-index: 5;
 }
 
 
