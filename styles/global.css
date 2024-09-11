@@ -6,6 +6,7 @@
 
 body {
   margin: auto;
+  max-inline-size: 1920px;
 }
 
 h1,
