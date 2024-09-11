@@ -1,7 +1,8 @@
 :root {
   --font-main: 'Golos-Text';
   --font-accent: 'Merriweather';
-  --font-size-main: 20px;
+  --font-size-title-content: clamp(2.25rem, 1.8243rem + 1.8163vw, 3.375rem);
+  --font-size-main: clamp(1.125rem, 1.0777rem + 0.2018vw, 1.25rem);
   --color-main: #313131;
   --color-links-main: #1f1f1f;
   --color-links-accent: #fff;
@@ -12,6 +13,7 @@
   --color-bg-card-member: #424241;
   --color-circle-overlay-img: #fbce51;
   --color-table: #d0d0d0;
+  --color-dots-pogination: #d9d9d9;
   --wght-main-text: 400;
   --font-feature-settings: 'pnum' on, 'lnum' on;
   --content-inline-size: clamp(21rem, 0.0458rem + 89.4046vw, 76.375rem);

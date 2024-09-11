@@ -169,8 +169,57 @@
           </a>
         </div>
       </section>
+      <section class="stages">
+        <div class="stages__details">
+          <h2 class="title stages__title">Этапы преображения Васюков</h2>
+          <a class="stages__link-content link-content">Будущие источники обогащения васюкинцев</a>
+        </div>
+        <div class="stages__carousel">
+          <ul class="stages__list">
+            <!--<div class="container-image-airplane" aria-hidden="true">
+              <picture class="image-airplane">
+                <source srcset="./images/airplane/airplane-mobile.avif" type="image/avif" media="(max-width: 425px)">
+                <source srcset="./images/airplane/airplane-mobile.webp" type="image/webp" media="(max-width: 425px)">
+                <source srcset="./images/airplane/airplane-mobile.png" type="image/png" media="(max-width: 425px)">
+                <source srcset="./images/airplane/airplane-desktop.avif" type="image/avif">
+                <source srcset="./images/airplane/airplane-desktop.webp" type="image/webp">
+                <img class="card__content-image target" 
+                  src="./images/airplane/airplane-desktop.png"
+                  srcset="./images/airplane/airplane-desktop.png 1x,
+                          ./images/airplane/airplane-desktop@2x.png 2x,
+                          ./images/airplane/airplane-desktop@3x.png 3x"
+                  alt="Самолет"
+                  >
+              </picture> 
+            </div>-->
+          </ul>
+          <div class="stages__pogination">
+            <button class="arrow-button arrow-button-left stages__button-left" disabled></button>
+              <div class="dots-navigation stages__dots-navigation">
+                <div class="dot active">
+                </div>
+                <div class="dot">
+                </div>
+                <div class="dot">
+                </div>
+                <div class="dot">
+                </div>
+                <div class="dot">
+                </div>
+              </div>
+            <button class="arrow-button stages__button-right"></button>
+          </div>
+        </div>
+      </section>
     </main>
-    
+
+    <template id="stage-card-template">
+      <li class="stages__list-item stage-card">
+        <span class="stage-card__number"></span>
+        <p class ="stage-card__describtion">
+        </p>
+      </li>
+    </template>
     <script type='module' src="./scripts/data.js"></script>
     <script type='module' src="./scripts/script.js"></script>
   </body>
