@@ -14,5 +14,5 @@
   --color-table: #d0d0d0;
   --wght-main-text: 400;
   --font-feature-settings: 'pnum' on, 'lnum' on;
-  --content-block-size: clamp(1222px, 27.5vw, 336px);
+  --content-inline-size: clamp(21rem, 0.0458rem + 89.4046vw, 76.375rem);
 }
