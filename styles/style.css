@@ -1,5 +1,6 @@
 .page {
   font-family: var(--font-main), sans-serif;
+  font-size: var(--font-size-main);
   font-variation-settings: 'wgth' var(--wght-main-text);
   font-feature-settings: var(--font-feature-settings);
   color: var(--color-main);
@@ -254,6 +255,259 @@
   grid-row: 2/3;
 }
 
+/******************************************************/
+
+.content {
+  inline-size: clamp(21rem, 0.0458rem + 89.4046vw, 76.375rem); /*336-1222*/
+  margin: 
+    79px
+    auto 
+    clamp(2.4375rem, 0.0488rem + 10.1917vw, 8.75rem);
+}
+
+.title.titl-resize {
+  font-size: clamp(2.25rem, 1.8243rem + 1.8163vw, 3.375rem);
+}
+
+.link-content {
+  font-family: var(--font-main);
+  font-variation-settings: "wght" 400;
+  font-size: clamp(1.125rem, 1.0777rem + 0.2018vw, 1.25rem);
+  color: var(--color-interactive-element);
+  line-height: 120%;
+  font-feature-settings: var(--font-feature-settings);
+  text-decoration: none;
+}
+
+
+/**********************************knowledge-начало****************************/
+.tournament {
+  display: grid;
+  /*grid-template-columns: clamp(21rem, 0.0458rem + 89.4046vw, 76.375rem); 336-1222*/
+  gap: 64px;
+}
+
+.tournament__text {
+  font-family: var(--font-accent), sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 1.5608rem + 0.8073vw, 2.25rem);
+  line-height: 135%;
+  text-transform: uppercase;
+  font-feature-settings: var(--font-feature-settings);
+  color: var(--color-main); /*убрать наследуется от родителя*/
+}
+
+.lecture__text-end .text-decor, 
+.seance__text .text-decor {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.lecture {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+  gap: 65px;
+}
+
+.lecture__container-image {
+  inline-size: clamp(20.9375rem, 19.5421rem + 5.9536vw, 24.625rem); /*335-394*/
+  aspect-ratio: 1/0.64;
+  border-radius: 60%;
+  position: relative;
+}
+
+.lecture__overlay,
+.lecture__image {
+  inline-size: 100%;
+  aspect-ratio: 1/0.64;
+  border-radius: 60%;
+  position: absolute;
+}
+
+.lecture__overlay {
+  background-image: url("../images/background-invitation-overlay.png");
+  mix-blend-mode: color-burn;
+  z-index: 1;
+}
+
+.lecture__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.seance {
+  display: grid;
+  grid-template-columns: auto clamp(21rem, 12.2967rem + 37.1342vw, 44rem);
+  grid-template-rows: repeat(3, auto);
+}
+
+.seance__container-image {
+  grid-column: 1/2;
+  grid-row: 1/4;
+  position: relative;
+}
+
+.seance__overlay,
+.seance__image {
+  aspect-ratio: 1/1.09;
+  position: absolute;
+}
+
+.seance__overlay {
+  background-image: url("../images/background-poster-overlay.png");
+  inline-size: 99%;
+  mix-blend-mode: color-burn;
+  z-index: 1;
+  transform: translate3d(-22px,-28px,0);
+}
+
+.seance__image {
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: translate3d(-23px,-28px,0);
+}
+
+.seance__text {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  margin-block-end: 46px;
+}
+
+.seance__table {
+  grid-column: 2/3;
+  grid-row: 2/3
+}
+
+.table__row {
+  display: grid;
+  grid-template-columns: 306px calc(100% - 306px);
+  border-bottom: 2px solid var(--color-table);
+}
+
+.table__row:last-child {
+  border-bottom: none;
+}
+
+.table__text {
+  line-height: 112%;
+  opacity: 0.7;
+  padding: 16px 0;
+}
+
+.table__text .strikethrough-text { 
+  display: inline-block;
+  text-decoration-line: line-through;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  margin-inline-end: 7px;
+}
+
+.table__text:first-child {
+  border-right: 2px solid var(--color-table);
+}
+
+.table__text:last-child {
+  font-variation-settings: "wght" 600;
+  opacity: 1;
+  margin-left: 16px;
+}
+
+.seance__link-content {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  margin-block-start: 33px;
+}
+
+@media (width < 1170px) {
+  .lecture {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .seance {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .seance__image {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  
+  .seance__text {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin-block-start: 24px;
+  }
+  
+  .seance__table {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+
+  .seance__link-content {
+    grid-column: 1/2;
+    grid-row: 4/5;
+  }
+  
+}
+
+@media (width <= 699px) {
+  .lecture {
+    grid-template-rows:repeat(3, min-content);
+  }
+
+  .lecture__text {
+    display: grid;
+    gap: calc(clamp(13.3125rem, 0.2917rem + 55.5556vw, 24.5625rem) + 48px); /*высота изображения + gap 24*2*/
+    grid-column: 1/2;
+    grid-row: 1/4;
+  }
+
+  .lecture__container-image {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  
+.lecture__overlay,
+.lecture__image  {
+  aspect-ratio: 1/0.63;
+}
+
+  .table {
+    display: grid;
+  }
+
+  .table__row {
+    display: inline-block;
+    padding: 16px 16px 16px 16px; /*тут нужно редактировать*/
+  }
+  
+  .table__row:last-child {
+    border-bottom: none;
+  }
+  
+  .table__text {
+    display: inline-block;
+    padding: 0; /*чтобы поправить текст таблицы*/
+    /*border: 1px solid red;*/
+  }
+    
+  .table__text:first-child {
+    border-right: none;
+    margin-right: 12px;
+    margin-bottom: 12px; /*тут нужно редактировать*/
+  }
+  
+  .table__text:last-child {
+    margin-left: 0px;
+  }
+}
+/********************************Медиа-запрсы**************************/
 @media (width < 1366px) {
   .header {
     justify-items: center;
@@ -262,6 +516,7 @@
   .header__content {
     width: clamp(29.461875rem, 24.8294rem + 10.5886vw, 33.869375rem);
     margin-bottom: clamp(24.0465rem, 4.5474rem + 44.633vw, 42.625rem);
+    margin-bottom: 465px;
     grid-column: 1/3;
     grid-row: 1/2;
   }
@@ -300,12 +555,14 @@
     width: clamp(18.591875rem, 10.0179rem + 36.5822vw, 41.25rem);
     left: clamp(-10rem, -20rem + 22.8571vw, -0.5rem);
     bottom: clamp(5.1875rem, 7.1612rem + -4.5113vw, 3.3125rem);
+    bottom: -38px;
   }
 
   .overlay-images__image.text {
     width: clamp(21.875rem, 11.2323rem + 45.4087vw, 50rem);
     left: clamp(-12.5rem, -20.5263rem + 18.3459vw, -4.875rem);
     bottom: clamp(-4.6875rem, -12.2533rem + 17.2932vw, 2.5rem);
+    bottom: -78px;
   }
 
   .overlay-images .king {
