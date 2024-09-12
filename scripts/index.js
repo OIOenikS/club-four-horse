@@ -40,7 +40,6 @@ const slideStagesCarousel = () => {
   }
   stagesList.style.transform = `translateX(-${slideIndex * stagesCarouselWidth}px)`;
 };
-
 const toggleDots = (index) => {
   dots.forEach((dot) => {
     if (dot.classList.contains('active')) {

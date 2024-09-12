@@ -568,6 +568,25 @@
   transform: rotate(-15.31deg);
 }
 
+.footer {
+  font-size: 16px;
+  background-color: var(--color-bg-header);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer__running__line {
+  inset-block-start: 0;
+}
+
+.footer__text {
+  margin: 
+    clamp(4.875rem, 4.3547rem + 2.22vw, 6.25rem) 
+    clamp(1.25rem, 0.0202rem + 5.2472vw, 4.5rem) 
+    clamp(3.75rem, 3.4662rem + 1.2109vw, 4.5rem);
+  opacity: 0.6;
+}
+
 /********************************Медиа-запрсы**************************/
 
 @media (width < 1366px) {
