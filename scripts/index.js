@@ -1,10 +1,16 @@
 import { stagesCards, membersCards  } from "./data.js";
-import { createStageCard } from "./cards.js";
+import { createStageCard, createMemberCard } from "./cards.js";
+import { selectDivider } from "./utils.js";
 import { 
   stagesCarousel,
   stagesList,
   stagesButtonLeft,
-  stagesButtonRight
+  stagesButtonRight,
+  membersList,
+  membersButtonLeft,
+  membersButtonRight,
+  currentMembers,
+  totalMembers
 } from "./constants.js";
 
 stagesCards.forEach((card) => {
@@ -71,3 +77,71 @@ dots.forEach((dot, index) => {
     toggleDots(slideIndex);
   });  
 });
+
+totalMembers.textContent =`/${membersCards.length}`;
+
+membersCards.forEach((card) => {
+  membersList.append(createMemberCard(card));
+})
+
+currentMembers.textContent = selectDivider();
+
+let count = 0;
+
+function moveRightMembersList (countCards, divider) {
+  count = count + 1;
+  currentMembers.textContent = Number(currentMembers.textContent) + divider;
+
+  if (count < countCards/divider) {
+    membersList.style.transform = `translateX(-${100*(count)}%)`;
+  }
+
+  if (count >= countCards/divider) {
+    count = 0;
+    currentMembers.textContent = divider; 
+    membersList.style.transform = `translateX(-${100*(count)}%)`;
+  }
+}
+
+function moveLeftMembersList (countCards, divider) {
+  count = count - 1;
+
+  if (count >= 0) {
+    membersList.style.transform = `translateX(-${100*(count)}%)`;
+    currentMembers.textContent = Number(currentMembers.textContent) - divider;
+  }
+
+  if (count < 0) {
+    count = countCards/divider - 1;
+    currentMembers.textContent = Number(currentMembers.textContent) + countCards - divider;
+    membersList.style.transform = `translateX(-${100*(count)}%)`;
+  }
+}
+
+function handleMouseClickOnBttnRightMembers () {
+  moveRightMembersList(membersCards.length, selectDivider());
+}
+
+function handleMouseClickOnBttnLeftMembers () {
+  moveLeftMembersList(membersCards.length, selectDivider());
+}
+
+membersButtonRight.addEventListener('click', handleMouseClickOnBttnRightMembers);
+membersButtonLeft.addEventListener('click', handleMouseClickOnBttnLeftMembers);
+
+window.addEventListener('resize', () => {
+  count = 0;
+  currentMembers.textContent = selectDivider();
+  membersList.style.transform = `translateX(0)`;
+
+  bttnRight.removeEventListener('click', handleMouseClickOnBttnRightMembers);
+  bttnLeft.removeEventListener('click', handleMouseClickOnBttnLeftMembers);
+
+  bttnRight.addEventListener('click', handleMouseClickOnBttnRightMembers);
+  bttnLeft.addEventListener('click', handleMouseClickOnBttnLeftMembers);
+});
+
+
+/*setInterval(()=>{
+  moveRightMembersList(membersCards.length, selectDivider());
+}, 4000);*/

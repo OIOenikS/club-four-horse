@@ -180,7 +180,12 @@
           <ul class="stages__list">
           </ul>
           <div class="stages__pogination">
-            <button class="arrow-button arrow-button-disabled stages__button-left" disabled></button>
+            <button 
+              class="arrow-button arrow-button-disabled stages__button-left" 
+              type="button" 
+              disabled
+            >
+            </button>
               <div class="dots-navigation stages__dots-navigation" aria-hidden="true">
                 <div class="dot active">
                 </div>
@@ -193,12 +198,31 @@
                 <div class="dot">
                 </div>
               </div>
-            <button class="arrow-button arrow-button-right stages__button-right"></button>
+            <button 
+              class="arrow-button arrow-button-right stages__button-right" 
+              type="button"
+            >
+            </button>
           </div>
           <img class="image-airplane" 
             src="./images/airplane.png"
             alt="Самолет"
           >
+        </div>
+      </section>
+      <section class="members">
+        <h2 class="title members__title">Участники турнира</h2>
+        <div class="members__pogination">
+          <button class="arrow-button members__button-left" type="button"></button>
+          <p class="members__counter">
+            <span class="members__counter__current"></span>
+            <span class="members__counter__total"></span>
+          </p>
+          <button class="arrow-button arrow-button-right members__button-right" type="button"></button>
+        </div>
+        <div class="members__carousel">
+          <ul class="members__list">
+          </ul>
         </div>
       </section>
     </main>
@@ -240,6 +264,20 @@
         <p class ="stage-card__describtion"></p>
       </li>
     </template>
+
+    <template id="member-card-template">
+      <li class="members__list-item member-card">
+        <div class="member-card__container-image">
+          <img class="member-card__image" src="/images/chess-player-silhouette.svg" alt="силует шахматиста">
+        </div>
+        <div class="member-card__info">
+          <h3 class="member-card__title"></h3>
+          <p class="member-card__text"></p>
+        </div>
+        <button type="button" class="member-card__button">Подробнее</button>
+      </li>
+    </template>
+
     <script type='module' src="./scripts/constants.js"></script>
     <script type='module' src="./scripts/data.js"></script>
     <script type='module' src="./scripts/utils.js"></script>

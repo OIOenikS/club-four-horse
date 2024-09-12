@@ -15,6 +15,7 @@
   --color-table: #d0d0d0;
   --color-dots-pogination: #d9d9d9;
   --color-bttn-disabled: #d6d6d6;
+  --color-transparent: #fff0;
   --wght-main-text: 400;
   --font-feature-settings: 'pnum' on, 'lnum' on;
   --content-inline-size: clamp(21rem, 0.0458rem + 89.4046vw, 76.375rem);
