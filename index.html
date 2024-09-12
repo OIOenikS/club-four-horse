@@ -180,7 +180,7 @@
           <ul class="stages__list">
           </ul>
           <div class="stages__pogination">
-            <button class="arrow-button arrow-button-left stages__button-left" disabled></button>
+            <button class="arrow-button arrow-button-disabled stages__button-left" disabled></button>
               <div class="dots-navigation stages__dots-navigation" aria-hidden="true">
                 <div class="dot active">
                 </div>
@@ -193,10 +193,10 @@
                 <div class="dot">
                 </div>
               </div>
-            <button class="arrow-button stages__button-right"></button>
+            <button class="arrow-button arrow-button-right stages__button-right"></button>
           </div>
           <img class="image-airplane" 
-            src="./images/airplane/Mask group (16).png"
+            src="./images/airplane.png"
             alt="Самолет"
           >
         </div>
@@ -205,12 +205,14 @@
 
     <template id="stage-card-template">
       <li class="stages__list-item stage-card">
-        <span class="stage-card__number"></span>
-        <p class ="stage-card__describtion">
-        </p>
+        <p class="stage-card__number"></p>
+        <p class ="stage-card__describtion"></p>
       </li>
     </template>
+    <script type='module' src="./scripts/constants.js"></script>
     <script type='module' src="./scripts/data.js"></script>
-    <script type='module' src="./scripts/script.js"></script>
+    <script type='module' src="./scripts/utils.js"></script>
+    <script type='module' src="./scripts/cards.js"></script>
+    <script type='module' src="./scripts/index.js"></script>
   </body>
 </html>

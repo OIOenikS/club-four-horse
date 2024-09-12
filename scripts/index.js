@@ -3,6 +3,7 @@ import { membersCards, stagesCards } from "./data.js";
 const templateStageCard = document.querySelector('#stage-card-template').content;
 
 const stages = document.querySelector('.stages');
+const stagesCarousel = stages.querySelector('.stages__carousel');
 const stagesList = stages.querySelector('.stages__list');
 
 function createStageCard (card) {
@@ -23,10 +24,8 @@ stagesCards.forEach((card) => {
 
 
 
-const stagesCarousel = document.querySelector('.stages__carousel');
 let slideIndex = 0;
 const carouselWidth = stagesCarousel.offsetWidth;
-const stagesListWidth = stagesList.getBoundingClientRect().width;
 const cardst = document.querySelector('.stage-card')
 console.log(cardst)
 const cardwidth = cardst.offsetWidth
