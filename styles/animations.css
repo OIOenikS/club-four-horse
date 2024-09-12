@@ -7,3 +7,16 @@
     transform: translateX(-100%);
   }
 }
+
+@keyframes airplane {
+  0% { transform: rotate(0) }
+  25% {transform: rotate(+7.31deg) }
+  50% { transform: rotate(+0.31deg) }
+  75% {transform: rotate(+7.31deg) }
+  100% { transform: rotate(+0.31deg) }
+}
+
+@keyframes sun {
+  from { transform: rotate(0) }
+  to { transform: rotate(360deg) }
+}

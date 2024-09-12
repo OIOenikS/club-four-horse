@@ -49,6 +49,7 @@
   line-height: 108%;
   text-transform: uppercase;
   white-space: pre-line;
+  transform-origin: center;
 }
 
 .header__title {
@@ -264,6 +265,7 @@
     clamp(3rem, 2.2668rem + 3.1282vw, 4.9375rem)
     auto 
     clamp(2.4375rem, 0.0488rem + 10.1917vw, 8.75rem);
+    border: 1px solid red;
 }
 
 .title {
@@ -449,9 +451,10 @@
 
 .stages {
   display: grid;
-  margin-block-start: 200px;
+  margin-block-start: clamp(7.625rem, 5.7803rem + 7.8708vw, 12.5rem);
   margin-block-end: clamp(11.3125rem, 10.8631rem + 1.9173vw, 12.5rem);
-  gap: 54px;
+  gap: clamp(3.375rem, 11.5593rem + -9.5863vw, 9.3125rem);
+  position: relative;
 }
 
 .stages__details {
@@ -487,7 +490,7 @@
 }
 
 .stages__list-item:nth-child(4) {
-  padding-block-end: 48px;
+  padding-block-end: 44px;
 }
 
 .stages__list-item:nth-child(5) {
@@ -500,11 +503,11 @@
 }
 
 .stages__list-item:nth-child(7) {
-  display:flex;
+  display: grid;
+  grid-template-columns: clamp(26.25rem, 1.6263rem + 33.6735vw, 30.375rem); 
   grid-column: 2/4;
   grid-row: 3/4;
   position: relative;
-  inset-inline-start: 5px;
 }
 
 .stage-card {
@@ -557,6 +560,16 @@
 
 .dot.active {
   background-color: var(--color-main);
+}
+
+.image-airplane {
+  display: block;
+  width: clamp(19.9225rem, 18.5536rem + 5.8406vw, 23.54rem); 
+  height: clamp(7.4225rem, 6.9102rem + 2.1857vw, 8.77625rem);
+  position: absolute;
+  top: 68%;
+  left: 73%;
+  transform: rotate(-15.31deg);
 }
 
 /********************************Медиа-запрсы**************************/
@@ -621,6 +634,15 @@
   .overlay-images .pawn {
     display: none;
   }
+
+  .stages__list-item:nth-child(7) {
+    grid-template-columns: auto; 
+  }
+
+  .image-airplane {
+    top: 2%;
+    left: 63%;
+  }  
 }
 
 @media (width < 1170px) {
@@ -710,11 +732,16 @@
   }
 
   .stages__details {
-    inline-size: 100%;
+    inline-size: 70%;
+  }
+
+  .stages__title {
+    line-height: 110%;
   }
   
   .stages__link-content {
-    inline-size: 100%;
+    left: 0;
+    margin-block-start: 12px;
   }
   
   .stages__list {
@@ -755,6 +782,16 @@
     grid-column: 2/3;
     grid-row: 4/5;
   }
+
+  .stages__link-content {
+    display: block;
+  }
+
+  .image-airplane {
+    top: clamp(1.5625rem, 18.6769rem + -23.4043vw, 8.4375rem);
+    left: clamp(15.625rem, -21.609rem + 85.1064vw, 40.625rem);
+    transform: rotate(-18.73deg);
+  }  
 }
 
 @media (width < 700px) {
@@ -894,7 +931,7 @@
   
   .table__text {
     display: inline-block;
-    line-height: 90%;
+    line-height: 117%;
     padding: 0;
   }
     
@@ -1001,6 +1038,31 @@
   .stages__list-item:nth-child(7) .number-item {
     top: 67px;
   }
-}  
+
+  .stages__link-content {
+    inline-size: 100%;
+  }
+
+  .image-airplane {
+    top: clamp(11.5625rem, 17.3605rem + -13.2716vw, 14.25rem);
+    left: clamp(1.125rem, -17.6829rem + 80.2469vw, 17.375rem);
+  }  
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .overlay-images__image.text {
+    animation: sun 10s linear infinite;
+  }  
+  .image-airplane {
+    animation: airplane 10s linear  infinite;
+  }  
+}
 
 /***********************************************************/ 
+.overlay-images__image.circle {
+  animation: sun 150s linear infinite;
+}  
+
+.overlay-images__image.text {
+  animation: sun 10s linear infinite;
+} 

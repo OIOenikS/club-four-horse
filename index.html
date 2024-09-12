@@ -64,7 +64,9 @@
         </nav>
       </div>
       <div class="header__overlay-images overlay-images" aria-hidden="true">
-        <div class="overlay-images__image circle"></div>
+        <div class="overlay-images__image circle">
+          <img class="overlay-images__image" src="./images/header-overlay/Group (6).png" alt="Шахматная фигура: король">
+        </div>
         <img class="overlay-images__image king" src="./images/header-overlay/king.png" alt="Шахматная фигура: король">
         <img class="overlay-images__image queen" src="./images/header-overlay/queen.png" alt="Шахматная фигура: ферзь">
         <img class="overlay-images__image horse" src="./images/header-overlay/horse.png" alt="Шахматная фигура: конь">
@@ -176,26 +178,10 @@
         </div>
         <div class="stages__carousel">
           <ul class="stages__list">
-            <!--<div class="container-image-airplane" aria-hidden="true">
-              <picture class="image-airplane">
-                <source srcset="./images/airplane/airplane-mobile.avif" type="image/avif" media="(max-width: 425px)">
-                <source srcset="./images/airplane/airplane-mobile.webp" type="image/webp" media="(max-width: 425px)">
-                <source srcset="./images/airplane/airplane-mobile.png" type="image/png" media="(max-width: 425px)">
-                <source srcset="./images/airplane/airplane-desktop.avif" type="image/avif">
-                <source srcset="./images/airplane/airplane-desktop.webp" type="image/webp">
-                <img class="card__content-image target" 
-                  src="./images/airplane/airplane-desktop.png"
-                  srcset="./images/airplane/airplane-desktop.png 1x,
-                          ./images/airplane/airplane-desktop@2x.png 2x,
-                          ./images/airplane/airplane-desktop@3x.png 3x"
-                  alt="Самолет"
-                  >
-              </picture> 
-            </div>-->
           </ul>
           <div class="stages__pogination">
             <button class="arrow-button arrow-button-left stages__button-left" disabled></button>
-              <div class="dots-navigation stages__dots-navigation">
+              <div class="dots-navigation stages__dots-navigation" aria-hidden="true">
                 <div class="dot active">
                 </div>
                 <div class="dot">
@@ -209,6 +195,10 @@
               </div>
             <button class="arrow-button stages__button-right"></button>
           </div>
+          <img class="image-airplane" 
+            src="./images/airplane/Mask group (16).png"
+            alt="Самолет"
+          >
         </div>
       </section>
     </main>
