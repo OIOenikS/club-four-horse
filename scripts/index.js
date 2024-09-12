@@ -134,11 +134,11 @@ window.addEventListener('resize', () => {
   currentMembers.textContent = selectDivider();
   membersList.style.transform = `translateX(0)`;
 
-  bttnRight.removeEventListener('click', handleMouseClickOnBttnRightMembers);
-  bttnLeft.removeEventListener('click', handleMouseClickOnBttnLeftMembers);
+  membersButtonRight.removeEventListener('click', handleMouseClickOnBttnRightMembers);
+  membersButtonLeft.removeEventListener('click', handleMouseClickOnBttnLeftMembers);
 
-  bttnRight.addEventListener('click', handleMouseClickOnBttnRightMembers);
-  bttnLeft.addEventListener('click', handleMouseClickOnBttnLeftMembers);
+  membersButtonRight.addEventListener('click', handleMouseClickOnBttnRightMembers);
+  membersButtonLeft.addEventListener('click', handleMouseClickOnBttnLeftMembers);
 });
 
 
