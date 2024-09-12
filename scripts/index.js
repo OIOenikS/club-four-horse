@@ -1,69 +1,46 @@
-import { membersCards, stagesCards } from "./data.js";
-
-const templateStageCard = document.querySelector('#stage-card-template').content;
-
-const stages = document.querySelector('.stages');
-const stagesCarousel = stages.querySelector('.stages__carousel');
-const stagesList = stages.querySelector('.stages__list');
-
-function createStageCard (card) {
-  const cardElement = templateStageCard.querySelector('.stage-card').cloneNode(true);
-  const cardNumber = cardElement.querySelector('.stage-card__number');
-  const cardDescribtion = cardElement.querySelector('.stage-card__describtion');
-
-  cardNumber.textContent = card['number-stage'];
-  cardDescribtion.textContent = card.describtion;
-  
-  return cardElement;
-}
+import { stagesCards, membersCards  } from "./data.js";
+import { createStageCard } from "./cards.js";
+import { 
+  stagesCarousel,
+  stagesList,
+  stagesButtonLeft,
+  stagesButtonRight
+} from "./constants.js";
 
 stagesCards.forEach((card) => {
   stagesList.append(createStageCard(card));
 })
 
+export let slideIndex = 0;
+export const stagesCarouselWidth = stagesCarousel.offsetWidth;
+export const transition = true;
+const dots = Array.from(document.querySelectorAll('.dot'));
 
-
-
-let slideIndex = 0;
-const carouselWidth = stagesCarousel.offsetWidth;
-const cardst = document.querySelector('.stage-card')
-console.log(cardst)
-const cardwidth = cardst.offsetWidth
-console.log(cardwidth)
-const countSlidesStagesCarousel = stagesList.offsetWidth/cardwidth;
-console.log(stagesListWidth)
-console.log(Math.floor(countSlidesStagesCarousel))
-const transition = true;
-const buttonLeft = document.querySelector('.arrow-button-left');
-const buttonRight = document.querySelector('.arrow-button-right'); 
-console.log(carouselWidth)
-
-const define = () => {
-  const computedStyle = window.getComputedStyle(stagesList);
-  const widthElement = computedStyle.getPropertyValue('width');
-  console.log(widthElement/cardwidth)
-}
-
-define()
-
-const toggleDisabledBttn = () => {
+const toggleDisabledBttnStages = () => {
   if (slideIndex === 0) {
-    buttonLeft.setAttribute('disabled', true);
-  } else buttonLeft.removeAttribute('disabled', '');
+    stagesButtonLeft.setAttribute('disabled', true);
+    stagesButtonLeft.classList.add('arrow-button-disabled');
+  } else {
+      stagesButtonLeft.removeAttribute('disabled', '');
+      stagesButtonLeft.classList.remove('arrow-button-disabled');
+    }
 
   if (slideIndex === 4) {
-    buttonRight.setAttribute('disabled', true);
-  } else buttonRight.removeAttribute('disabled', '');
+    stagesButtonRight.setAttribute('disabled', true);
+    stagesButtonRight.classList.add('arrow-button-disabled');
+  } else {
+      stagesButtonRight.removeAttribute('disabled', '');
+      stagesButtonRight.classList.remove('arrow-button-disabled');
+    }
 }
 
-const slide = () => {
+const slideStagesCarousel = () => {
   if (transition) {
     stagesList.style.transition = 'transform .5s';
   }
-  stagesList.style.transform = `translateX(-${slideIndex * carouselWidth}px)`;
+  stagesList.style.transform = `translateX(-${slideIndex * stagesCarouselWidth}px)`;
 };
 
-const dots = Array.from(document.querySelectorAll('.dot'));
 const toggleDots = (index) => {
   dots.forEach((dot) => {
     if (dot.classList.contains('active')) {
@@ -71,27 +48,27 @@ const toggleDots = (index) => {
     }
   })
   dots[index].classList.add('active');
-}
+} 
 
-buttonRight.addEventListener('click', () => {
+stagesButtonRight.addEventListener('click', () => {
   slideIndex++;
-  toggleDisabledBttn();
-  slide();
+  toggleDisabledBttnStages();
+  slideStagesCarousel();
   toggleDots(slideIndex);
 });
 
-buttonLeft.addEventListener('click', () => {
+stagesButtonLeft.addEventListener('click', () => {
   slideIndex--;
-  toggleDisabledBttn();
-  slide();
+  toggleDisabledBttnStages();
+  slideStagesCarousel();
   toggleDots(slideIndex);
 });
 
 dots.forEach((dot, index) => {
   dot.addEventListener('click', () => {
     slideIndex = index;
-    toggleDisabledBttn();
-    slide();
+    toggleDisabledBttnStages();
+    slideStagesCarousel();
     toggleDots(slideIndex);
   });  
-})
+});

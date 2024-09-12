@@ -966,7 +966,7 @@
 
   .stages__list {
     grid-template-columns: repeat(5, 1fr);
-    row-gap: 0;
+    gap: 0;
   }
   
   .stages__list-item {
