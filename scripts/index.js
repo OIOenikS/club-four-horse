@@ -3,7 +3,6 @@ import { createStageCard, createMemberCard } from "./cards.js";
 import { defineWindowWidth, selectDivider } from "./utils.js";
 import { 
   stagesCarousel,
-  stagesDotsNavigation,
   stagesList,
   stagesButtonLeft,
   stagesButtonRight,
@@ -23,16 +22,6 @@ const cardStagetWidth = cardStage.offsetWidth;
 const stagesListWidth = stagesList.scrollWidth;
 const countSlidesStagesCarousel = Math.round(stagesListWidth/cardStagetWidth);
 
-function createDot () {
-  const dotElement  = document.createElement('div');
-  dotElement.classList.add('dot');
-  return dotElement;
-}
-
-for (let i = 0; i < countSlidesStagesCarousel; i++) {
-  stagesDotsNavigation.append(createDot());
-  stagesDotsNavigation.firstElementChild.classList.add('active');
-}
 
 let slideIndex = 0;
 const transition = true;
@@ -157,9 +146,8 @@ window.addEventListener('resize', () => {
   slideIndex = 0;
   stagesList.style.transform = `translateX(0)`;
   if (defineWindowWidth() < 700) {
-    toggleDisabledBttnStages();
-    moveStagesList();
-    toggleDots();
+    slideStagesCarousel();
+
     stagesButtonRight.removeEventListener('click', handleBttnRightStages);
     stagesButtonLeft.removeEventListener('click', handleBttnLeftStages);
     dots.forEach((dot, index) => {

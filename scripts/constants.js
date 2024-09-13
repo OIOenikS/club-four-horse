@@ -3,7 +3,6 @@ const templateMemberCard = document.querySelector('#member-card-template').conte
 
 const stages = document.querySelector('.stages');
 const stagesCarousel = stages.querySelector('.stages__carousel');
-const stagesDotsNavigation = stages.querySelector('.dots-navigation');
 const stagesList = stages.querySelector('.stages__list');
 const stagesButtonLeft = stages.querySelector('.stages__button-left');
 const stagesButtonRight = stages.querySelector('.stages__button-right');
@@ -20,7 +19,6 @@ export {
   templateStageCard,
   templateMemberCard,
   stagesCarousel,
-  stagesDotsNavigation,
   stagesList,
   stagesButtonLeft,
   stagesButtonRight,
