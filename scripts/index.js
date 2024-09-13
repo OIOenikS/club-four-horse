@@ -142,6 +142,6 @@ window.addEventListener('resize', () => {
 });
 
 
-/*setInterval(()=>{
+setInterval(()=>{
   moveRightMembersList(membersCards.length, selectDivider());
-}, 4000);*/
+}, 4000);

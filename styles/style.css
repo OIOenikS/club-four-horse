@@ -300,7 +300,9 @@
 .content .lecture, 
 .content .seance,
 .content .stages,
-.content .members {
+.stages__carousel,
+.content .members,
+.members__carousel {
   inline-size: var(--content-inline-size);
 }
 
@@ -610,7 +612,6 @@
 }
 
 .members__carousel {
-  inline-size: 100%;
   grid-column: 1/3;
   grid-row: 2/3;
   overflow: hidden;
