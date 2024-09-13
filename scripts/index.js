@@ -17,11 +17,6 @@ stagesCards.forEach((card) => {
   stagesList.append(createStageCard(card));
 })
 
-const cardStage = document.querySelector('.stages__list-item');
-const cardStagetWidth = cardStage.offsetWidth;
-const stagesListWidth = stagesList.scrollWidth;
-const countSlidesStagesCarousel = Math.round(stagesListWidth/cardStagetWidth);
-
 
 let slideIndex = 0;
 const transition = true;
@@ -40,7 +35,7 @@ const toggleDisabledBttnStages = () => {
       stagesButtonLeft.classList.remove('arrow-button-disabled');
     }
 
-  if (slideIndex >= countSlidesStagesCarousel - 1) {
+  if (slideIndex >= 4) {
     stagesButtonRight.setAttribute('disabled', true);
     stagesButtonRight.classList.add('arrow-button-disabled');
   } else {
