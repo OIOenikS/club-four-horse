@@ -1,4 +1,4 @@
-function defineWindowWidth () {
+export function defineWindowWidth () {
   return window.innerWidth;
 }
 
