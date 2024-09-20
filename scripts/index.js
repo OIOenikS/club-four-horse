@@ -232,6 +232,11 @@ window.addEventListener('resize', () => {
   membersButtonLeft.addEventListener('click', handleBttnLeftMembers);
 });
 
-/*setInterval(()=>{
-  moveRightMembersList(membersCards.length, selectDivider());
-}, 4000);*/
+setInterval(()=>{
+  slideRightMembersCarousel(
+    membersCards.length, 
+    defineCountMembersGroup(),
+    defineWidthGroupMembers(),
+    selectDivider()
+  );
+}, 4000);

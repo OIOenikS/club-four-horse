@@ -615,7 +615,6 @@
   grid-column: 1/3;
   grid-row: 2/3;
   overflow: hidden;
-  border: 1px solid red;
 }
 
 .carousel-members__inner {
@@ -630,7 +629,6 @@
 
 .members__item {
   inline-size: clamp(20.9375rem, -0.9442rem + 29.9492vw, 24.625rem);
-  border: 1px solid green;
   margin-inline-start: 20px;
 }
 
@@ -638,18 +636,6 @@
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
-  min-height: 150px;
-  border: 1px solid pink;
-  background-color: cadetblue;
-}
-
-.carousel-members__group:nth-child(2n) {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  min-height: 150px;
-  border: 1px solid pink;
-  background-color: orange;
 }
 
 .member-card {
