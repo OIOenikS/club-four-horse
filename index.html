@@ -216,9 +216,9 @@
           </p>
           <button class="arrow-button arrow-button-right members__button-right" type="button"></button>
         </div>
-        <div class="members__carousel">
-          <ul class="members__list">
-          </ul>
+        <div class="members__carousel carousel-members">
+          <div class="carousel-members__inner">
+          </div>
         </div>
       </section>
     </main>
@@ -262,7 +262,7 @@
     </template>
 
     <template id="member-card-template">
-      <li class="members__list-item member-card">
+      <div class="members__item carousel-members__item member-card">
         <div class="member-card__container-image">
           <img class="member-card__image" src="/images/chess-player-silhouette.svg" alt="силует шахматиста">
         </div>
@@ -271,7 +271,7 @@
           <p class="member-card__text"></p>
         </div>
         <button type="button" class="member-card__button">Подробнее</button>
-      </li>
+      </div>
     </template>
 
     <script type='module' src="./scripts/constants.js"></script>

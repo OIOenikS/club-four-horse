@@ -6,7 +6,7 @@ import {
   stagesList,
   stagesButtonLeft,
   stagesButtonRight,
-  membersList,
+  membersСarouselInner,
   membersButtonLeft,
   membersButtonRight,
   currentMembers,
@@ -17,8 +17,7 @@ stagesCards.forEach((card) => {
   stagesList.append(createStageCard(card));
 })
 
-
-let slideIndex = 0;
+let slideStagesIndex = 0;
 const transition = true;
 const dots = Array.from(document.querySelectorAll('.dot'));
 
@@ -27,7 +26,7 @@ const defineStagesCarouselWidth = () => {
 }
 
 const toggleDisabledBttnStages = () => {
-  if (slideIndex <= 0) {
+  if (slideStagesIndex <= 0) {
     stagesButtonLeft.setAttribute('disabled', true);
     stagesButtonLeft.classList.add('arrow-button-disabled');
   } else {
@@ -35,7 +34,7 @@ const toggleDisabledBttnStages = () => {
       stagesButtonLeft.classList.remove('arrow-button-disabled');
     }
 
-  if (slideIndex >= 4) {
+  if (slideStagesIndex >= 4) {
     stagesButtonRight.setAttribute('disabled', true);
     stagesButtonRight.classList.add('arrow-button-disabled');
   } else {
@@ -48,7 +47,7 @@ const moveStagesList = () => {
   if (transition) {
     stagesList.style.transition = 'transform .5s';
   }
-  stagesList.style.transform = `translateX(-${slideIndex * defineStagesCarouselWidth()}px)`;
+  stagesList.style.transform = `translateX(-${slideStagesIndex * defineStagesCarouselWidth()}px)`;
 };
 
 const toggleDots = () => {
@@ -57,7 +56,7 @@ const toggleDots = () => {
       dot.classList.remove('active');
     }
   })
-  dots[slideIndex].classList.add('active');
+  dots[slideStagesIndex].classList.add('active');
 }
 
 const slideStagesCarousel = () => {
@@ -67,17 +66,17 @@ const slideStagesCarousel = () => {
 }
 
 function handleBttnRightStages () {
-  slideIndex++;
+  slideStagesIndex++;
   slideStagesCarousel();
 }
 
 function handleBttnLeftStages  () {
-  slideIndex--;
+  slideStagesIndex--;
   slideStagesCarousel();
 }
 
 function handleDottStages  (e) {
-  slideIndex = e.target.dataset.dotIndex;
+  slideStagesIndex = e.target.dataset.dotIndex;
   slideStagesCarousel();
 }
 
@@ -88,57 +87,118 @@ dots.forEach((dot, index) => {
   dot.addEventListener('click', handleDottStages);  
 });
 
-let count = 0;
+let slideMembersIndex = 0;
 totalMembers.textContent =`/${membersCards.length}`;
 currentMembers.textContent = selectDivider();
 
-membersCards.forEach((card) => {
-  membersList.append(createMemberCard(card));
-})
+export function createGroupMembersCarousel () {
+  const groupElement = document.createElement('div');
+  groupElement.classList.add('carousel-members__group');
+  return groupElement;
+}
 
-function moveRightMembersList (countCards, divider) {
-  count = count + 1;
-  currentMembers.textContent = Number(currentMembers.textContent) + divider;
+function setValueWidthGroupMembers (groupElement, divider) {
+  const itemMembers = document.querySelector('.carousel-members__item');
+  const styleItemMembers = window.getComputedStyle(itemMembers);
+  const itemMembersMarginRightString = styleItemMembers.getPropertyValue('margin-inline-start');
+  const itemMembersMarginRight = itemMembersMarginRightString.match(/\d+/g)[0];
+  groupElement.style.width = `${(Number(itemMembers.offsetWidth) + Number(itemMembersMarginRight))*divider}px`;
+}
 
-  if (count < countCards/divider) {
-    membersList.style.transform = `translateX(-${100*(count)}%)`;
-  }
-
-  if (count >= countCards/divider) {
-    count = 0;
-    currentMembers.textContent = divider; 
-    membersList.style.transform = `translateX(-${100*(count)}%)`;
+function addGroupsInMembersCarousel (divider) {
+  for (let i = 0; i < membersCards.length/divider; i++) {
+    const groupElement = createGroupMembersCarousel(); 
+    for (let j = 0; j < divider; j++) {
+        const itemIndex = i * divider + j;
+        if (itemIndex < membersCards.length) {
+          groupElement.append(createMemberCard(membersCards[itemIndex]));
+        }
+    }
+    membersСarouselInner.append(groupElement); 
+    setValueWidthGroupMembers(groupElement, divider)
   }
 }
 
-function moveLeftMembersList (countCards, divider) {
-  count = count - 1;
+addGroupsInMembersCarousel(selectDivider());
 
-  if (count >= 0) {
-    membersList.style.transform = `translateX(-${100*(count)}%)`;
+function removeGroupsInMembersCarousel () {
+  const membersGroup = Array.from(document.querySelectorAll('.carousel-members__group'));
+  membersGroup.forEach((groupElement) => {
+    groupElement.remove(); 
+  })
+}
+
+function defineCountMembersGroup () {
+  const countMembersGroup = Array.from(document.querySelectorAll('.carousel-members__group')).length;
+  return countMembersGroup;
+}
+
+function defineWidthGroupMembers () {
+  const groupMembers = document.querySelector('.carousel-members__group')
+  const widthGroupMembers = Number(groupMembers.offsetWidth);
+  return widthGroupMembers;
+}
+
+function slideRightMembersCarousel (countCards, countMembersGroup, widthGroupMembers, divider) {
+  slideMembersIndex = slideMembersIndex + 1;
+  currentMembers.textContent = Number(currentMembers.textContent) + divider;
+
+  if (slideMembersIndex < countMembersGroup) {
+    if (slideMembersIndex === countMembersGroup - 1 ) {
+      currentMembers.textContent = countCards;
+    }
+    membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
+  }
+
+  if (slideMembersIndex >= countMembersGroup) {
+    slideMembersIndex = 0;
+    currentMembers.textContent = divider; 
+    membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
+  }
+}
+
+function slideLeftMembersCarousel (countCards, countMembersGroup, widthGroupMembers, divider) {
+  slideMembersIndex = slideMembersIndex - 1;
+
+  if (slideMembersIndex >= 0) {
+    if (slideMembersIndex === countMembersGroup - 2) {
+      currentMembers.textContent = countMembersGroup*divider;
+    }
+    membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
     currentMembers.textContent = Number(currentMembers.textContent) - divider;
   }
 
-  if (count < 0) {
-    count = countCards/divider - 1;
-    currentMembers.textContent = Number(currentMembers.textContent) + countCards - divider;
-    membersList.style.transform = `translateX(-${100*(count)}%)`;
+  if (slideMembersIndex < 0) {
+    slideMembersIndex = countMembersGroup - 1;
+    currentMembers.textContent =  countCards;
+    membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
   }
 }
 
+  
 function handleBttnRightMembers () {
-  moveRightMembersList(membersCards.length, selectDivider());
+  slideRightMembersCarousel(
+    membersCards.length, 
+    defineCountMembersGroup(),
+    defineWidthGroupMembers(),
+    selectDivider()
+  );
 }
-
+  
 function handleBttnLeftMembers () {
-  moveLeftMembersList(membersCards.length, selectDivider());
+  slideLeftMembersCarousel(
+    membersCards.length, 
+    defineCountMembersGroup(),
+    defineWidthGroupMembers(),
+    selectDivider()
+  );
 }
-
+  
 membersButtonRight.addEventListener('click', handleBttnRightMembers);
 membersButtonLeft.addEventListener('click', handleBttnLeftMembers);
-
+  
 window.addEventListener('resize', () => {
-  slideIndex = 0;
+  slideStagesIndex = 0;
   stagesList.style.transform = `translateX(0)`;
   if (defineWindowWidth() < 700) {
     slideStagesCarousel();
@@ -157,10 +217,13 @@ window.addEventListener('resize', () => {
       dot.addEventListener('click', handleDottStages);  
     });
   }
-
-  count = 0;
+  
+  removeGroupsInMembersCarousel(); 
+  addGroupsInMembersCarousel(selectDivider());
+  slideMembersIndex = 0;
   currentMembers.textContent = selectDivider();
-  membersList.style.transform = `translateX(0)`;
+
+  membersСarouselInner.style.transform = `translateX(0)`;
 
   membersButtonRight.removeEventListener('click', handleBttnRightMembers);
   membersButtonLeft.removeEventListener('click', handleBttnLeftMembers);
@@ -170,5 +233,10 @@ window.addEventListener('resize', () => {
 });
 
 setInterval(()=>{
-  moveRightMembersList(membersCards.length, selectDivider());
+  slideRightMembersCarousel(
+    membersCards.length, 
+    defineCountMembersGroup(),
+    defineWidthGroupMembers(),
+    selectDivider()
+  );
 }, 4000);
