@@ -23,6 +23,10 @@ export const membersCards = [
     name: 'Остап Бендер',
     grade: 'Гроссмейстер'
   },
+  {
+    name: 'Катюха',
+    grade: 'Гроссмейстер'
+  },
 ]
 
 export const stagesCards = [

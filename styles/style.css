@@ -643,6 +643,15 @@
   background-color: cadetblue;
 }
 
+.carousel-members__group:nth-child(2n) {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  min-height: 150px;
+  border: 1px solid pink;
+  background-color: orange;
+}
+
 .member-card {
   display: grid;
   justify-items: center;
@@ -1244,10 +1253,6 @@
 
   .members__item {
     inline-size: clamp(20.9375rem, -0.1013rem + 89.7654vw, 39.115rem);
-  }
-  
-  .members__item:not(:nth-of-type(3n)) {
-    margin-inline-end: 0; /*проверить*/
   }
 
   .member-card__image {

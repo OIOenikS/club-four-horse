@@ -56,7 +56,7 @@ const toggleDots = () => {
       dot.classList.remove('active');
     }
   })
-  dots[slideIndex].classList.add('active');
+  dots[slideStagesIndex].classList.add('active');
 }
 
 const slideStagesCarousel = () => {
@@ -105,21 +105,28 @@ function setValueWidthGroupMembers (groupElement, divider) {
   groupElement.style.width = `${(Number(itemMembers.offsetWidth) + Number(itemMembersMarginRight))*divider}px`;
 }
 
-function addGroupsInMembersCarousel () {
-  for (let i = 0; i < membersCards.length/3; i++) {
+function addGroupsInMembersCarousel (divider) {
+  for (let i = 0; i < membersCards.length/divider; i++) {
     const groupElement = createGroupMembersCarousel(); 
-    for (let j = 0; j < 3; j++) {
-        const itemIndex = i * 3 + j;
+    for (let j = 0; j < divider; j++) {
+        const itemIndex = i * divider + j;
         if (itemIndex < membersCards.length) {
           groupElement.append(createMemberCard(membersCards[itemIndex]));
         }
     }
     membersСarouselInner.append(groupElement); 
-    setValueWidthGroupMembers(groupElement, 3)
+    setValueWidthGroupMembers(groupElement, divider)
   }
 }
 
-addGroupsInMembersCarousel();
+addGroupsInMembersCarousel(selectDivider());
+
+function removeGroupsInMembersCarousel () {
+  const membersGroup = Array.from(document.querySelectorAll('.carousel-members__group'));
+  membersGroup.forEach((groupElement) => {
+    groupElement.remove(); 
+  })
+}
 
 function defineCountMembersGroup () {
   const countMembersGroup = Array.from(document.querySelectorAll('.carousel-members__group')).length;
@@ -167,6 +174,7 @@ function slideLeftMembersCarousel (countCards, countMembersGroup, widthGroupMemb
     membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
   }
 }
+
   
 function handleBttnRightMembers () {
   slideRightMembersCarousel(
@@ -209,9 +217,12 @@ window.addEventListener('resize', () => {
       dot.addEventListener('click', handleDottStages);  
     });
   }
-
+  
+  removeGroupsInMembersCarousel(); 
+  addGroupsInMembersCarousel(selectDivider());
   slideMembersIndex = 0;
   currentMembers.textContent = selectDivider();
+
   membersСarouselInner.style.transform = `translateX(0)`;
 
   membersButtonRight.removeEventListener('click', handleBttnRightMembers);
