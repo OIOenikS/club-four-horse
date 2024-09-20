@@ -8,11 +8,12 @@ const stagesButtonLeft = stages.querySelector('.stages__button-left');
 const stagesButtonRight = stages.querySelector('.stages__button-right');
 
 const members = document.querySelector('.members');
-const membersList = members.querySelector('.members__list');
 const membersButtonLeft = members.querySelector('.members__button-left');
 const membersButtonRight = members.querySelector('.members__button-right');
 const currentMembers = members.querySelector('.members__counter__current');
 const totalMembers = members.querySelector('.members__counter__total');
+const membersСarousel = members.querySelector('.carousel-members');
+const membersСarouselInner = membersСarousel.querySelector('.carousel-members__inner');
 
 
 export {
@@ -22,7 +23,7 @@ export {
   stagesList,
   stagesButtonLeft,
   stagesButtonRight,
-  membersList,
+  membersСarouselInner,
   membersButtonLeft,
   membersButtonRight,
   currentMembers,
