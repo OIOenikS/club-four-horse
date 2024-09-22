@@ -21,6 +21,13 @@ let slideStagesIndex = 0;
 const transition = true;
 const dots = Array.from(document.querySelectorAll('.dot'));
 
+const moveCarouselInner = (inner, slideIndex, offsetWidth) => {
+  if (transition) {
+    stagesList.style.transition = 'transform .5s';
+  }
+  inner.style.transform = `translateX(-${slideIndex * offsetWidth}px)`;
+};
+
 const defineStagesCarouselWidth = () => {
   return stagesCarousel.offsetWidth;
 }
@@ -43,13 +50,6 @@ const toggleDisabledBttnStages = () => {
     }
 }
 
-const moveStagesList = () => {
-  if (transition) {
-    stagesList.style.transition = 'transform .5s';
-  }
-  stagesList.style.transform = `translateX(-${slideStagesIndex * defineStagesCarouselWidth()}px)`;
-};
-
 const toggleDots = () => {
   dots.forEach((dot) => {
     if (dot.classList.contains('active')) {
@@ -61,7 +61,11 @@ const toggleDots = () => {
 
 const slideStagesCarousel = () => {
   toggleDisabledBttnStages();
-  moveStagesList();
+  moveCarouselInner(
+    stagesList,
+    slideStagesIndex,
+    defineStagesCarouselWidth()
+  );
   toggleDots();
 }
 
@@ -140,58 +144,72 @@ function defineWidthGroupMembers () {
 }
 
 function slideRightMembersCarousel (countCards, countMembersGroup, widthGroupMembers, divider) {
-  slideMembersIndex = slideMembersIndex + 1;
+  slideMembersIndex++;
   currentMembers.textContent = Number(currentMembers.textContent) + divider;
 
   if (slideMembersIndex < countMembersGroup) {
     if (slideMembersIndex === countMembersGroup - 1 ) {
       currentMembers.textContent = countCards;
     }
-    membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
+    moveCarouselInner(
+      membersСarouselInner,
+      slideMembersIndex,
+      widthGroupMembers
+    );
   }
 
   if (slideMembersIndex >= countMembersGroup) {
     slideMembersIndex = 0;
     currentMembers.textContent = divider; 
-    membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
+    moveCarouselInner(
+      membersСarouselInner,
+      slideMembersIndex,
+      widthGroupMembers
+    );
   }
 }
 
 function slideLeftMembersCarousel (countCards, countMembersGroup, widthGroupMembers, divider) {
-  slideMembersIndex = slideMembersIndex - 1;
+  slideMembersIndex--;
 
   if (slideMembersIndex >= 0) {
     if (slideMembersIndex === countMembersGroup - 2) {
       currentMembers.textContent = countMembersGroup*divider;
     }
-    membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
+    moveCarouselInner(
+      membersСarouselInner,
+      slideMembersIndex,
+      widthGroupMembers
+    );
     currentMembers.textContent = Number(currentMembers.textContent) - divider;
   }
 
   if (slideMembersIndex < 0) {
     slideMembersIndex = countMembersGroup - 1;
     currentMembers.textContent =  countCards;
-    membersСarouselInner.style.transform = `translateX(-${widthGroupMembers*slideMembersIndex}px)`;
+    moveCarouselInner(
+      membersСarouselInner,
+      slideMembersIndex,
+      widthGroupMembers
+    );
   }
 }
 
-  
-function handleBttnRightMembers () {
-  slideRightMembersCarousel(
+const slideMembersCarousel = (slideCarousel) => {
+  slideCarousel(
     membersCards.length, 
     defineCountMembersGroup(),
     defineWidthGroupMembers(),
     selectDivider()
-  );
+  )
+}
+
+function handleBttnRightMembers () {
+  slideMembersCarousel(slideRightMembersCarousel);
 }
   
 function handleBttnLeftMembers () {
-  slideLeftMembersCarousel(
-    membersCards.length, 
-    defineCountMembersGroup(),
-    defineWidthGroupMembers(),
-    selectDivider()
-  );
+  slideMembersCarousel(slideLeftMembersCarousel);
 }
   
 membersButtonRight.addEventListener('click', handleBttnRightMembers);
@@ -233,10 +251,5 @@ window.addEventListener('resize', () => {
 });
 
 setInterval(()=>{
-  slideRightMembersCarousel(
-    membersCards.length, 
-    defineCountMembersGroup(),
-    defineWidthGroupMembers(),
-    selectDivider()
-  );
+  slideMembersCarousel(slideRightMembersCarousel);
 }, 4000);
