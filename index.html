@@ -264,7 +264,13 @@
     <template id="member-card-template">
       <div class="members__item carousel-members__item member-card">
         <div class="member-card__container-image">
-          <img class="member-card__image" src="/images/chess-player-silhouette.svg" alt="силует шахматиста">
+          <svg 
+          class="member-card__image" 
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          >
+            <use href="./images/chess-player-silhouette.svg#player"></use>
+          </svg>
         </div>
         <div class="member-card__info">
           <h3 class="member-card__title"></h3>
